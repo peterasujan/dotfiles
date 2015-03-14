@@ -1,6 +1,6 @@
 ;; Emacs config
 ;; Peter Sujan
-;; Last updated: 4/13/14
+;; Last updated: 3/13/15
 
 ; Sets the indentation level for html mode
 (add-hook 'html-mode-hook
@@ -65,6 +65,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(c-basic-offset 4)
  '(LaTeX-command "pdflatex")
  '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (light-blue))))
@@ -84,6 +85,8 @@
 (ac-config-default)
 
 ;;; ESS related stuff - suggested by http://kieranhealy.org/blog/archives/2009/10/12/make-shift-enter-do-a-lot-in-ess/
+;;; There seems to be some bug in which it complains about an unexpected
+;;; '>' when R first starts
 (setq ess-ask-for-ess-directory nil)
 (setq ess-local-process-name "R")
 (setq ansi-color-for-comint-mode 'filter)
@@ -110,4 +113,14 @@
 
 (add-hook 'ess-mode-hook
           '(lambda()
-             (local-set-key [(control return)] 'my-ess-eval)))
+             (local-set-key [C-return] 'my-ess-eval)))
+
+;; Simpler alternative to the above
+;; (add-hook 'ess-mode-hook
+;; 	  (lambda()
+;; 	    (local-set-key [C-return] 'ess-eval-line-and-step)))
+
+;; Didn't really like this
+;;(add-hook 'LaTeX-mode-hook
+;;	  (lambda()
+;;	    (local-set-key [tab] 'TeX-complete-symbol)))

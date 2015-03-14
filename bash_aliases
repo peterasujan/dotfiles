@@ -17,7 +17,7 @@ alias term='gnome-terminal'
 alias temp-monitor='watch -n1 acpi -t'
 
 # makes emacs default to full screen
-alias emacs='emacs -mm --no-splash'
+alias emacs='emacs -mm'
 
 # ssh related
 alias ssh-stat='ssh $S135LOGIN'
