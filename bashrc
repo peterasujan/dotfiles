@@ -109,22 +109,15 @@ fi
 
 ### begin my settings
 
-# environment variables
-
-export BERKELEYUID=945621
-export STATSERVER=98.143.35.205
-export S135LOGIN=s135-$BERKELEYUID@$STATSERVER
-export EDITOR='emacs -nw'
-export ISCHOOL='peterasujan@ischool.berkeley.edu'
-
 # source ~/groovy_workspace/setup.bash
 source ~/catkin_ws/devel/setup.bash
 #export PATH=/opt/ros/groovy/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 #source /home/peter/groovy_workspace/setup.bash
 #export ROBOT=sim
 #source /home/peter/tutorials/setup.bash
+# source /opt/ros/groovy/setup.bash
+# source /home/peter/testing/devel/setup.bash
 
-export LANG=en_US.UTF-8
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
