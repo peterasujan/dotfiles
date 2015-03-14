@@ -109,8 +109,9 @@ fi
 
 ### begin my settings
 
+## Research stuff
 # source ~/groovy_workspace/setup.bash
-source ~/catkin_ws/devel/setup.bash
+# source ~/catkin_ws/devel/setup.bash
 #export PATH=/opt/ros/groovy/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 #source /home/peter/groovy_workspace/setup.bash
 #export ROBOT=sim

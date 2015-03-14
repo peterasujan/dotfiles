@@ -2,6 +2,12 @@
 ;; Peter Sujan
 ;; Last updated: 3/13/15
 
+;;; timing
+(message "Begin loading Peter's .emacs file")
+(require 'cl) ; a rare necessary use of REQUIRE
+(defvar *emacs-load-start* (current-time))
+
+
 ; Sets the indentation level for html mode
 (add-hook 'html-mode-hook
         (lambda ()
@@ -80,9 +86,9 @@
 ;;; Adds autocomplete
 
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
-(ac-config-default)
+(when (require 'auto-complete-config nil 'noerror)
+  (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+  (ac-config-default))
 
 ;;; ESS related stuff - suggested by http://kieranhealy.org/blog/archives/2009/10/12/make-shift-enter-do-a-lot-in-ess/
 ;;; There seems to be some bug in which it complains about an unexpected
@@ -124,3 +130,19 @@
 ;;(add-hook 'LaTeX-mode-hook
 ;;	  (lambda()
 ;;	    (local-set-key [tab] 'TeX-complete-symbol)))
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
+
+
+
+
+;;; Timing
+(message "My .emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
+						       (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
