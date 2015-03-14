@@ -1,9 +1,17 @@
-# Peter's bash aliases - updated 12/17/14
+# bash aliases
+# Peter Sujan
 
+# environment variables
 export robocop='robocop.banatao.berkeley.edu'
 
-alias emacs='emacs -mm --no-splash'
+# assorted
 alias term='gnome-terminal'
-alias sshcop='ssh $robocop'
-
 alias temp-monitor='watch -n1 acpi -t'
+
+# makes emacs default to full screen
+alias emacs='emacs -mm --no-splash'
+
+# ssh related
+alias ssh-stat='ssh $S135LOGIN'
+alias sshischool='ssh peterasujan@ischool.berkeley.edu' # defunct, I believe
+alias sshcop='ssh $robocop'
