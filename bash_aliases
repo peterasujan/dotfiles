@@ -10,7 +10,7 @@ export LANG=en_US.UTF-8
 #export INFOKEY='~/.ssh/Info290T.pem'
 export INFOUSER='ubuntu'
 export INFOSERVER='54.200.79.119'
-export INFOLOGIN=$INFOUSER@INFOSERVER
+export INFOLOGIN=$INFOUSER@$INFOSERVER
 
 # a lot of the following is defunct
 export BERKELEYUID=945621
