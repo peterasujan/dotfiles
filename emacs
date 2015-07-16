@@ -56,6 +56,12 @@
             (if (eq window-system 'x)
                 (font-lock-mode 1))))
 
+(defun json-format ()
+  (interactive)
+  (save-excursion
+    (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)
+)
+)
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and

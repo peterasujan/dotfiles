@@ -11,6 +11,15 @@ export LANG=en_US.UTF-8
 export INFOUSER='ubuntu'
 export INFOSERVER='54.200.79.119'
 export INFOLOGIN=$INFOUSER@$INFOSERVER
+export MICHAELMACPRO=Yosemite-Pro.local
+
+# ssh related
+alias ssh-stat='ssh $S135LOGIN'
+#alias sshischool='ssh $ISCHOOL' # defunct, I believe
+alias sshcop='ssh $robocop'
+alias sshinfo='ssh -i ~/.ssh/Info290T.pem $INFOUSER@$INFOSERVER'
+alias sshmichael='ssh peter@$MICHAELMACPRO'
+
 
 # a lot of the following is defunct
 export BERKELEYUID=945621
@@ -25,8 +34,4 @@ alias temp-monitor='watch -n1 acpi -t'
 # makes emacs default to full screen
 alias emacs='emacs -mm'
 
-# ssh related
-alias ssh-stat='ssh $S135LOGIN'
-#alias sshischool='ssh $ISCHOOL' # defunct, I believe
-alias sshcop='ssh $robocop'
-alias sshinfo='ssh -i ~/.ssh/Info290T.pem $INFOUSER@$INFOSERVER'
+
