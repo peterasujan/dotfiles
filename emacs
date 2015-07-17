@@ -1,3 +1,5 @@
+; -*- mode: emacs-lisp -*-
+
 ;; Emacs config
 ;; Peter Sujan
 ;; Last updated: 3/13/15
@@ -7,6 +9,7 @@
 (require 'cl) ; a rare necessary use of REQUIRE
 (defvar *emacs-load-start* (current-time))
 
+; (setq x-select-enable-clipboard t)
 
 ; Sets the indentation level for html mode
 (add-hook 'html-mode-hook
