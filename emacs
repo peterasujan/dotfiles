@@ -1,3 +1,5 @@
+;; -*- mode: emacs-lisp -*-
+
 ;; Emacs config
 ;; Peter Sujan
 ;; Last updated: 3/13/15
@@ -56,12 +58,24 @@
             (if (eq window-system 'x)
                 (font-lock-mode 1))))
 
+; Adds json formatting command
 (defun json-format ()
   (interactive)
   (save-excursion
     (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)
-)
-)
+    )
+  )
+
+; make .json files open in js-mode
+(setq auto-mode-alist
+      (cons '("\\.json$" . js-mode) auto-mode-alist))
+
+; Decrease js/json indentation
+(add-hook 'js-mode-hook
+	  (lambda ()
+	    (set (make-local-variable 'js-indent-level) 4)
+	    )
+	  )
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
