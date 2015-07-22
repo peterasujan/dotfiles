@@ -47,6 +47,10 @@
 (global-set-key (kbd "<M-left>") 'windmove-left)
 (global-set-key (kbd "<M-right>") 'windmove-right)
 
+; Highlight matching parens
+(show-paren-mode 1)
+(setq show-paren-delay 0)
+
 ; Sets .m files to octave mode
 (autoload 'octave-mode "octave-mod" nil t)
 (setq auto-mode-alist
