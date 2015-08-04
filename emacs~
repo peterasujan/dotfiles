@@ -9,12 +9,6 @@
 (require 'cl) ; a rare necessary use of REQUIRE
 (defvar *emacs-load-start* (current-time))
 
-(add-to-list 'load-path "~/.emacs.d/lisp")
-
-;;; adds more package archives - I need to figure out how to make this work w.r.t emacs 24
-;(add-to-list 'package-archives
-;'("melpa-stable" . "http://stable.melpa.org/packages/") t)
-
 ; (setq x-select-enable-clipboard t)
 
 ; Sets the indentation level for html mode
@@ -88,9 +82,6 @@
 	    )
 	  )
 
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.
@@ -118,6 +109,7 @@
  )
 
 ;;; adds web-mode - not sure I like it yet
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'web-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -193,6 +185,7 @@
 
 
 
+
 ;;; Timing
-;(message "My .emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
-;						       (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
+(message "My .emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
+						       (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
