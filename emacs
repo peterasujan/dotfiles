@@ -219,8 +219,7 @@
  '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(c-basic-offset 4)
  '(custom-enabled-themes (quote (light-blue)))
- '(custom-safe-themes (quote ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
- ;'(frame-background-mode (quote dark))
+ '(custom-safe-themes (quote ("01b2830f44925d13b3e34eba4d1dd34af4c6c197aeb53fbe0f52aefe13e60f0d" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(org-agenda-files (quote ("~/school/todo.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -238,7 +237,7 @@
 ;(require 'color-theme-solarized)
 ;(color-theme-solarized)
 
-
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes" t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized" t)
 
 ;;; Timing -- this fails in emacs 24
