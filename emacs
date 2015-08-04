@@ -54,7 +54,10 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
-
+; 'FIXME in comments' mode -- highlights TODOs and FIXMEs
+(require 'fic-mode)
+(add-hook 'c-mode-common-hook 'turn-on-fic-mode)
+(add-hook 'js-mode-hook 'turn-on-fic-mode)
 
 ;;;;;;;;;;;;;;;;;;;
 ;; MODE SPECIFIC ;;
