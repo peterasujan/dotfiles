@@ -9,6 +9,9 @@
 (require 'cl) ; a rare necessary use of REQUIRE
 (defvar *emacs-load-start* (current-time))
 
+;; lisp packages
+(add-to-list 'load-path "~/.emacs.d/lisp")
+
 ; (setq x-select-enable-clipboard t)
 
 ; Sets the indentation level for html mode
@@ -81,6 +84,10 @@
 	    (set (make-local-variable 'js-indent-level) 4)
 	    )
 	  )
+
+;; yaml mode
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
