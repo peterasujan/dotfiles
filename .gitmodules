@@ -1,0 +1,6 @@
+[submodule "emacs.d/lisp/polymode"]
+	path = emacs.d/lisp/polymode
+	url = git@github.com:vitoshka/polymode
+[submodule "emacs.d/lisp/ESS"]
+	path = emacs.d/lisp/ESS
+	url = git@github.com:emacs-ess/ESS
