@@ -121,6 +121,11 @@
 ;; my customizations
 ;; (setq web-mode-code-indent-offset 2)
 
+;;;; HASKELL
+(add-to-list 'load-path "~/.emacs.d/lisp/haskell-mode/")
+(require 'haskell-mode-autoloads)
+(add-to-list 'Info-default-directory-list "~/.emacs.d/lisphaskell-mode/")
+
 ;;;; AUTOCOMPLETE
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (when (require 'auto-complete-config nil 'noerror)
