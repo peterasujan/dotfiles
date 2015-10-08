@@ -44,6 +44,9 @@
 ;(custom-set-variables
 ; '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
+; Removes the big buttons at the top
+(tool-bar-mode -1)
+
 ; Makes M-<direction> switch windows
 (global-set-key (kbd "<M-up>") 'windmove-up)
 (global-set-key (kbd "<M-down>") 'windmove-down)
@@ -124,7 +127,8 @@
 ;;;; HASKELL
 (add-to-list 'load-path "~/.emacs.d/lisp/haskell-mode/")
 (require 'haskell-mode-autoloads)
-(add-to-list 'Info-default-directory-list "~/.emacs.d/lisphaskell-mode/")
+(add-to-list 'Info-default-directory-list "~/.emacs.d/lisp/haskell-mode/")
+(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 
 ;;;; AUTOCOMPLETE
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
