@@ -1,3 +1,4 @@
+# -*- mode: shell-script -*-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -140,3 +141,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ### java stuff
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/jre
 export PATH=$PATH:$JAVA_HOME/bin
+
+### better git log
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"

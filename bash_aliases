@@ -1,3 +1,4 @@
+# -*- mode: shell-script -*-
 # bash aliases
 # Peter Sujan
 

@@ -14,17 +14,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list
-   'package-archives
-   '("melpa" . "http://melpa.org/packages/")
-   t)
-  (add-to-list
-   'package-archives
-   '("marmalade" . "https://marmalade-repo.org/packages/")
-   t)
-  (package-initialize)
-  (package-refresh-contents))
+ (require 'package)
+ (add-to-list
+  'package-archives
+  '("melpa-stable" . "http://stable.melpa.org/packages/")
+  t)
+ (add-to-list
+  'package-archives
+  '("marmalade" . "https://marmalade-repo.org/packages/")
+  t)
+ (package-initialize)
+ (package-refresh-contents)
+  )
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
@@ -127,11 +128,12 @@
   (ac-config-default))
 
 
-
 ;;;; ESS
 ;;; ESS related stuff - suggested by http://kieranhealy.org/blog/archives/2009/10/12/make-shift-enter-do-a-lot-in-ess/
 ;;; There seems to be some bug in which it complains about an unexpected
 ;;; '>' when R first starts
+(add-to-list 'load-path "~/.emacs.d/lisp/ESS/lisp/")
+(require 'ess-site)
 (setq ess-ask-for-ess-directory nil)
 (setq ess-local-process-name "R")
 (setq ansi-color-for-comint-mode 'filter)
@@ -171,6 +173,16 @@
 ;;	  (lambda()
 ;;	    (local-set-key [tab] 'TeX-complete-symbol)))
 
+;;;; MARKDOWN
+(require 'markdown-mode)
+
+;;;; POLYMODE
+(add-to-list 'load-path "~/.emacs.d/lisp/polymode/")
+(add-to-list 'load-path "~/.emacs.d/lisp/polymode/modes")
+(require 'poly-R)
+(require 'poly-markdown)
+(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
+(defalias 'bash-mode 'shell-script-mode)
 
 
 ;;;;;;;;;;;;;;
