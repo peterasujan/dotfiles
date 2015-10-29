@@ -144,3 +144,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 ### better git log
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+### Spark and Hadoop
+export PATH=$PATH:~/source/spark-1.5.1-bin-hadoop2.6/bin
+export PATH=$PATH:~/source/hadoop-2.7.1/bin
