@@ -4,3 +4,9 @@
 [submodule "emacs.d/lisp/ESS"]
 	path = emacs.d/lisp/ESS
 	url = git@github.com:emacs-ess/ESS
+[submodule "emacs.d/lisp/haskell-mode"]
+	path = emacs.d/lisp/haskell-mode
+	url = git@github.com:haskell/haskell-mode
+[submodule "emacs.d/themes/emacs-color-theme-solarized"]
+	path = emacs.d/themes/emacs-color-theme-solarized
+	url = git@github.com:sellout/emacs-color-theme-solarized
