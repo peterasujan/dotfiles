@@ -2,7 +2,7 @@
 
 ;; Emacs config
 ;; Peter Sujan
-;; Last updated: 3/13/15
+;; Last updated: 2/25/16
 
 ;;; timing
 (message "Begin loading Peter's .emacs file")
@@ -87,6 +87,42 @@
             (auto-fill-mode 1)
             (if (eq window-system 'x)
                 (font-lock-mode 1))))
+
+;;;; PYTHON
+(setq python-shell-interpreter "ipython3"
+      python-shell-interpreter-args "-i")
+(defun my-python-eval ()
+  (interactive)
+  (setq multiline mark-active)
+  (save-excursion
+    (setq the_script_buffer (format (buffer-name)))
+    (end-of-line)
+    (if mark-active
+	(kill-ring-save (point) (mark))
+	(kill-ring-save (point) (progn (back-to-indentation) (point))))
+    (if  (get-buffer  "*Python*")
+	(message "")
+      (run-python))
+    ;; (setq the_py_buffer (format "*Python[%s]*" (buffer-file-name)))
+    (setq the_py_buffer "*Python*")
+    (switch-to-buffer-other-window the_py_buffer)
+    (goto-char (buffer-end 1))
+    (if multiline
+	(progn (kill-append "%cpaste\n" 1)
+	       (kill-append "\n--" nil))
+      )
+    (yank)
+    (comint-send-input)
+    (switch-to-buffer-other-window the_script_buffer)
+    )
+  ;;(if (not multiline)
+  (next-line)
+  ;;)
+  )
+
+(add-hook 'python-mode-hook
+          '(lambda()
+             (local-set-key [C-return] 'my-python-eval)))
 
 ;;;; JAVASCRIPT/JSON
 ; Adds json formatting command
@@ -237,7 +273,8 @@
  '(LaTeX-command "pdflatex")
  '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(c-basic-offset 4)
- '(custom-enabled-themes (quote (light-blue)))
+ ;; '(custom-enabled-themes (quote (light-blue)))
+ '(custom-enabled-themes (quote (tsdh-dark)))
  '(custom-safe-themes (quote ("01b2830f44925d13b3e34eba4d1dd34af4c6c197aeb53fbe0f52aefe13e60f0d" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(org-agenda-files (quote ("~/school/todo.org"))))
 (custom-set-faces
