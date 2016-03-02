@@ -220,6 +220,7 @@
 
 ;;;; MARKDOWN
 (require 'markdown-mode)
+(add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
 
 ;;;; POLYMODE
 (add-to-list 'load-path "~/.emacs.d/lisp/polymode/")
