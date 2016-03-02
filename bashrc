@@ -149,3 +149,7 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 export PATH=$PATH:~/source/spark-1.5.1-bin-hadoop2.6/bin
 export PATH=$PATH:~/source/spark-1.5.1-bin-hadoop2.6/ec2
 export PATH=$PATH:~/source/hadoop-2.7.1/bin
+
+# added by Anaconda3 2.4.1 installer
+export PATH="/home/peter/anaconda3/bin:$PATH"
+
