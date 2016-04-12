@@ -10,3 +10,9 @@
 [submodule "emacs.d/themes/emacs-color-theme-solarized"]
 	path = emacs.d/themes/emacs-color-theme-solarized
 	url = git@github.com:sellout/emacs-color-theme-solarized
+[submodule "emacs.d/multiple-cursors"]
+	path = emacs.d/multiple-cursors
+	url = git@github.com:magnars/multiple-cursors.el
+[submodule "emacs.d/lisp/scala-mode-2"]
+	path = emacs.d/lisp/scala-mode-2
+	url = https://github.com/hvesalai/scala-mode2

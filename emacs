@@ -61,6 +61,21 @@
 (require 'fic-mode)
 (add-hook 'c-mode-common-hook 'turn-on-fic-mode)
 (add-hook 'js-mode-hook 'turn-on-fic-mode)
+(add-hook 'python-mode-hook 'turn-on-fic-mode)
+
+; Multiline editing
+(add-to-list 'load-path "~/.emacs.d/multiple-cursors/")
+(require 'multiple-cursors-core)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+
+; next few lines need 'multiple-cursors (not just multiple-cursors-core),
+; but requiring that file causes an error
+;; (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+
+;; (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+;; (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+;; (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;;;;;;;;;;;;;;;;;;;
 ;; MODE SPECIFIC ;;
@@ -165,6 +180,16 @@
 (require 'haskell-mode-autoloads)
 (add-to-list 'Info-default-directory-list "~/.emacs.d/lisp/haskell-mode/")
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
+
+;;;; SCALA
+(add-to-list 'load-path "~/.emacs.d/lisp/scala-mode-2/")
+(require 'scala-mode2)
+
+;; (add-hook 'scala-mode-hook
+;; 	  (lambda ()
+;; 	    (set (make-local-variable 'scala-indent) 4)
+;; 	    )
+;; 	  )
 
 ;;;; AUTOCOMPLETE
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
