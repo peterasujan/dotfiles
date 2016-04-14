@@ -13,19 +13,46 @@
 ;; PACKAGE INSTALLATION ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
 (when (>= emacs-major-version 24)
  (require 'package)
+ (package-initialize)
  (add-to-list
   'package-archives
-  '("melpa-stable" . "http://stable.melpa.org/packages/")
+  '("melpa" . "http://melpa.org/packages/")
+  t)
+ ;; (setq package-archives '(;("melpa" . "http://melpa.org/packages/")
+ ;; 			  ("elpy" . "https://jorgenschaefer.github.io/packages/"))
+ ;;       )
+ (add-to-list
+  'package-archives
+  '("melpa-stable" . "https://stable.melpa.org/packages/")
   t)
  (add-to-list
   'package-archives
   '("marmalade" . "https://marmalade-repo.org/packages/")
   t)
+ ;; (add-to-list 'package-archives
+ ;; 	      '("elpy" . "https://jorgenschaefer.github.io/packages/") t)
  (package-initialize)
- (package-refresh-contents)
-  )
+ (when (not package-archive-contents)
+   (package-refresh-contents))
+
+ (defvar myPackages
+  '(better-defaults
+    material-theme
+    elpy
+    flycheck
+    py-autopep8))
+
+ (mapc #'(lambda (package)
+    (unless (package-installed-p package)
+      (package-install package)))
+      myPackages)
+ 
+ (elpy-enable)
+ )
+
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
@@ -139,6 +166,17 @@
           '(lambda()
              (local-set-key [C-return] 'my-python-eval)))
 
+
+;; Linting
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+;; Auto pep8 compliance
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+
 ;;;; JAVASCRIPT/JSON
 ; Adds json formatting command
 (defun json-format ()
@@ -192,10 +230,10 @@
 ;; 	  )
 
 ;;;; AUTOCOMPLETE
-(add-to-list 'load-path "~/.emacs.d/auto-complete")
-(when (require 'auto-complete-config nil 'noerror)
-  (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
-  (ac-config-default))
+;; (add-to-list 'load-path "~/.emacs.d/auto-complete")
+;; (when (require 'auto-complete-config nil 'noerror)
+;;   (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+;;   (ac-config-default))
 
 
 ;;;; ESS
@@ -275,16 +313,15 @@
 ; binds the above procedure to the F6 key
 (global-set-key [f6] 'remove-google-docs-garbage)
 
-
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.
 ;;; Move this code earlier if you want to reference
 ;;; packages in your .emacs.
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
+;; (when
+;;     (load
+;;      (expand-file-name "~/.emacs.d/elpa/package.el"))
+;;   (package-initialize))
 
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -297,12 +334,16 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(LaTeX-command "pdflatex")
- '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(c-basic-offset 4)
- ;; '(custom-enabled-themes (quote (light-blue)))
  '(custom-enabled-themes (quote (tsdh-dark)))
- '(custom-safe-themes (quote ("01b2830f44925d13b3e34eba4d1dd34af4c6c197aeb53fbe0f52aefe13e60f0d" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
- '(org-agenda-files (quote ("~/school/todo.org"))))
+ '(custom-safe-themes
+   (quote
+    ("01b2830f44925d13b3e34eba4d1dd34af4c6c197aeb53fbe0f52aefe13e60f0d" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(org-agenda-files (quote ("~/school/todo.org")))
+ '(package-selected-packages (quote (flycheck material-theme better-defaults elpy))))
+ 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
